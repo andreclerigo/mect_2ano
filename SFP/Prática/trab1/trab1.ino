@@ -128,14 +128,10 @@ void loop() {
     }
 
     // Debug info
-    Serial.print("Motor state: ");
-    Serial.print(motor_state);
-    Serial.print(" | Ultrassonic sensor: ");
-    Serial.print(water_level);
-    Serial.print(" | Max button: ");
-    Serial.print(digitalRead(MAX_LEVEL_BUTTON));
-    Serial.print(" | Min button: ");
-    Serial.println(digitalRead(MIN_LEVEL_BUTTON));
+    Serial.print("Motor state: " + String(motor_state));
+    Serial.print(" | Ultrassonic sensor: " + String(water_level));
+    Serial.print(" | Max button: " + String(digitalRead(MAX_LEVEL_BUTTON)));
+    Serial.println(" | Min button: " + String(digitalRead(MIN_LEVEL_BUTTON)));
 
     delay(1000);
 }
