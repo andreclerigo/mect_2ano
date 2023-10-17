@@ -95,22 +95,22 @@ void loop() {
     // Motor is off, check if the water level is low
     if (motor_state == false) {
         // Ultrassonic sensor checks the water level
+        /*
         if (water_level < LED_THRESHOLD) {                  // Water level is low
             Serial.println("Tank is empty");
             Serial.println("Turning motor ON!");
             analogWrite(GREEN_LED, 255);                    // Motor is ON
             motor_state = true;                                  
         }
+        */
  
         // ESP buttons to simulate water level
-        /*
         if (min_level == HIGH && max_level == HIGH) {       // Water level is low
             Serial.println("Tank is empty");
             Serial.println("Turning motor ON!");
             analogWrite(GREEN_LED, 255);                    // Motor is ON
             motor_state = true;                                  
         }
-        */
     }
 
     // Motor fiiling the tank, check if the water level is high
