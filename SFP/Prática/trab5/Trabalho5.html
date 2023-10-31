@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <title>Trabalho 5</title>
+    <style>
+      /* Center the entire page vertically and horizontally */
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: linear-gradient(to bottom, #196fa9 30%, #f2f2f2);
+        margin: 0;
+        font-family: Arial, sans-serif;
+      }
+
+      /* Big title style */
+      h1 {
+        font-size: 48px;
+        font-weight: bold;
+        color: #ffffff;
+        margin-bottom: 20px;
+      }
+
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .column {
+        flex: 1;
+        text-align: center;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Style the ON button as green */
+      .btn-on {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-on:hover {
+        background-color: #3e8e41;
+      }
+
+      /* Style the OFF button as red */
+      .btn-off {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 5px;
+        background-color: #f44336;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn-off:hover {
+        background-color: #d32f2f;
+      }
+
+      p {
+        font-size: 28px;
+        font-weight: bold;
+        color: #ffffff;
+      }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        setInterval(function () {
+          $.ajax({
+            url: "Novo.php", // replace with the actual path to your PHP file
+            success: function (data) {
+              $("#gpio0Status")
+                .text(data.gpio0Status)
+                .css("color", data.gpio0Status === "ON" ? "green" : "red");
+              $("#gpio4Status")
+                .text(data.gpio4Status)
+                .css("color", data.gpio4Status === "ON" ? "green" : "red");
+              $("#gpio2Status")
+                .text(data.gpio2Status)
+                .css("color", data.gpio2Status === "ON" ? "green" : "red");
+              $("#analog0Value").text(data.analog0Value);
+            },
+            dataType: "json",
+          });
+        }, 500);
+
+        // Send AJAX request to update the LED value in the database
+        $(".btn-on").click(function () {
+          $.ajax({
+            type: "POST",
+            url: "LEDControl.php",
+            data: { value: 0 },
+            success: function (response) {
+              // handle success if needed
+              console.log(response);
+            },
+            error: function (xhr, status, error) {
+              // handle error if needed
+              console.error(error);
+            },
+          });
+        });
+
+        $(".btn-off").click(function () {
+          $.ajax({
+            type: "POST",
+            url: "LEDControl.php",
+            data: { value: 1 },
+            success: function (response) {
+              // handle success if needed
+              console.log(response);
+            },
+            error: function (xhr, status, error) {
+              // handle error if needed
+              console.error(error);
+            },
+          });
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <h1>SFP - Trabalho nº5</h1>
+    <div class="row">
+      <div class="column">
+        <img
+          src="https://forms.ua.pt/upload/themes/survey/UA_Default/files/LogoUAfacebook.png"
+          alt="Logo Universidade de Aveiro"
+        />
+      </div>
+      <div class="column">
+        <p>Control Blue LED</p>
+        <!-- 
+        <button class="btn-on" onclick="window.location.href='/GPIO=1'">ON</button>
+        <button class="btn-off" onclick="window.location.href='/GPIO=0'">OFF</button>
+        -->
+        <button class="btn-on">ON</button>
+        <button class="btn-off">OFF</button>
+      </div>
+      <div class="column">
+        <p>GPIO 0: <span id="gpio0Status" style="color: red">OFF</span></p>
+        <p>GPIO 4: <span id="gpio4Status" style="color: red">OFF</span></p>
+        <p>GPIO 2: <span id="gpio2Status" style="color: red">OFF</span></p>
+        <p>A0: <span id="analog0Value">0</span></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="column">
+        <p style="color: #222222">
+          André Pragosa Clérigo, Número Mecanográfico: 98485
+        </p>
+      </div>
+    </div>
+  </body>
+</html>
