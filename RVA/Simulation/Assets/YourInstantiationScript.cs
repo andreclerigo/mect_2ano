@@ -62,16 +62,25 @@ public class YourInstantiationScript : MonoBehaviour
     void PlayDangerousAnimation(Animator animator)
     {
         animator.Play("CarDrive");
+        DisplayWarningSystem();
+    }
 
+    public void DisplayWarningSystem()
+    {
         // Instantiate the warningSystem GameObject as a child of ButtonCanvas
         GameObject warningSystemInstance = Instantiate(warningSystem, GameObject.Find("ButtonCanvas").transform);
         // Adjust the rect transform of the warningSystemInstance
         RectTransform rectTransform = warningSystemInstance.GetComponent<RectTransform>();
         rectTransform.anchoredPosition = new Vector3(90f, -400f, 0f);
 
+        /*
         // Get the "CarSim" animation clip
         AnimationClip carSimClip = animator.runtimeAnimatorController.animationClips.FirstOrDefault(clip => clip.name == "CarDrive");
         // Destroy the warningSystemInstance 2 seconds after the animatition ends
         Destroy(warningSystemInstance, carSimClip.length + 2f);
+        */
+
+        // Destroy the warningSystemInstance after 5 secondsof being triggered
+        Destroy(warningSystemInstance, 5f);
     }
 }

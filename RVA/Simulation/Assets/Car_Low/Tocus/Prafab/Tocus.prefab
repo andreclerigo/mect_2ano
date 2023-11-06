@@ -1432,6 +1432,7 @@ GameObject:
   - component: {fileID: 4013073016293618}
   - component: {fileID: 95629998500851910}
   - component: {fileID: 481933442950529889}
+  - component: {fileID: 4350538861436108392}
   m_Layer: 0
   m_Name: Tocus
   m_TagString: Untagged
@@ -1491,6 +1492,37 @@ MonoBehaviour:
   buttonName: ButtonStartSimulation
   warningSystem: {fileID: 544804158865543218, guid: a23b90681494138448d00f67a428ef63,
     type: 3}
+--- !u!114 &4350538861436108392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610265466720824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbaa80705124f9e439d56ca6d5e6db69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brokerAddress: test.mosquitto.org
+  brokerPort: 1883
+  isEncrypted: 0
+  certificateName: 
+  connectionDelay: 500
+  timeoutOnConnection: 30000
+  autoConnect: 1
+  mqttUserName: 
+  mqttPassword: 
+  autoTest: 0
+  consoleInputField: {fileID: 0}
+  encryptedToggle: {fileID: 0}
+  addressInputField: {fileID: 0}
+  portInputField: {fileID: 0}
+  connectButton: {fileID: 0}
+  disconnectButton: {fileID: 0}
+  testPublishButton: {fileID: 0}
+  clearButton: {fileID: 0}
+  scriptReference: {fileID: 481933442950529889}
 --- !u!1 &1672185482629448
 GameObject:
   m_ObjectHideFlags: 0
