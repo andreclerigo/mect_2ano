@@ -56,6 +56,8 @@ struct VirtualFuncInvoker4
 	}
 };
 
+// System.Action`1<UnityEngine.AudioSource>
+struct Action_1_t8E17A00BD7C4683736E546D719017D67E0CE6319;
 // System.Action`2<UnityEngine.GameObject,System.Boolean>
 struct Action_2_tF2B6FF4AA6879FB0563035A9F690DD90C9D07E29;
 // System.Action`4<UnityEngine.Transform,System.Single,System.Single,System.Single>
@@ -150,6 +152,10 @@ struct Func_3_tEB5BDE0C2F72F5613C39E307AEE7439A01C73048;
 struct Func_3_t3545AF65E5361B1A1B2E1997559CBD6944BFD979;
 // System.Func`4<UnityEngine.Component,System.Type,System.Boolean,UnityEngine.Component>
 struct Func_4_tBBFCEA01F025A499ED1C60C54DCF5DBF8FC47857;
+// Unity.VisualScripting.InstanceActionInvoker`1<UnityEngine.AudioSource>
+struct InstanceActionInvoker_1_t723E9C952955BF00E5B58455638A7FC51A6311FF;
+// Unity.VisualScripting.InstanceActionInvoker`1<System.Object>
+struct InstanceActionInvoker_1_t7EABE4654E36AC938BF4EFE08D82D364745C5286;
 // Unity.VisualScripting.InstanceActionInvoker`2<UnityEngine.GameObject,System.Boolean>
 struct InstanceActionInvoker_2_tD0CA4FE9C8D8DE75137CCE709DB2DA489B952FE9;
 // Unity.VisualScripting.InstanceActionInvoker`2<System.Object,System.Boolean>
@@ -262,6 +268,8 @@ struct StaticFunctionInvoker_3_t371273EBED66F18553D52FB313C6CD6CB4FAE8A1;
 struct TypeU5BU5D_t97234E1129B564EB38B8D85CAC2AD8B5B9522FFB;
 // Unity.VisualScripting.Generated.Aot.AotStubs
 struct AotStubs_tF4D97888740106FD944A82DA2810D80DBBD915B8;
+// UnityEngine.AudioSource
+struct AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299;
 // System.Reflection.Binder
 struct Binder_t91BFCE95A7057FADF4D8A1A342AFE52872246235;
 // UnityEngine.Component
@@ -288,6 +296,7 @@ struct Void_t4861ACF8F4594C3437BB48B6E56783494B843915;
 IL2CPP_EXTERN_C RuntimeClass* Boolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Bounds_t367E830C64BBF235ED8C3B2F8CF6254FDCAD39C3_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Color_tD001788D726C3A7F1379BEED0260B9591F440C1F_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C RuntimeClass* InstanceActionInvoker_1_t723E9C952955BF00E5B58455638A7FC51A6311FF_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* InstanceActionInvoker_2_tD0CA4FE9C8D8DE75137CCE709DB2DA489B952FE9_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* InstanceActionInvoker_4_t6D03DCB0EF4F6CE137ED81F25BE1FBE54A212FF6_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* InstanceFunctionInvoker_4_t6DD3FDFE36D6169C82449D913DB506E6A9BD1364_il2cpp_TypeInfo_var;
@@ -347,6 +356,7 @@ IL2CPP_EXTERN_C RuntimeClass* StaticFunctionInvoker_3_tFE59F2BE1C1EE1D6A85D5E54B
 IL2CPP_EXTERN_C RuntimeClass* Vector2_t1FD6F485C871E832B347AB2DC8CBA08B739D8DF7_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Vector3_t24C512C7B96BBABAD472002D0BA2BDA40A5A80B2_il2cpp_TypeInfo_var;
 IL2CPP_EXTERN_C RuntimeClass* Vector4_t58B63D32F48C0DBF50DE2C60794C4676C80EDBE3_il2cpp_TypeInfo_var;
+IL2CPP_EXTERN_C const RuntimeMethod* InstanceActionInvoker_1__ctor_mA5E6B67497565E2565F4A264896A8DE60272E96E_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* InstanceActionInvoker_2__ctor_m96CCDBA3FB651DB60D1FD5E5B5A338DC0C19BB42_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* InstanceActionInvoker_4__ctor_m4E307AE40FB58C5B0D7D4B5D8D462199BD193247_RuntimeMethod_var;
 IL2CPP_EXTERN_C const RuntimeMethod* InstanceFunctionInvoker_4__ctor_m7FE4C0E8714874A99C85DBCB7B2A5E0DFC7401DB_RuntimeMethod_var;
@@ -462,6 +472,11 @@ struct ValueType_t6D9B272BD21782F0A9A14F2E41F85A50E97A986F_marshaled_pinvoke
 };
 // Native definition for COM marshalling of System.ValueType
 struct ValueType_t6D9B272BD21782F0A9A14F2E41F85A50E97A986F_marshaled_com
+{
+};
+
+// Unity.VisualScripting.InstanceInvokerBase`1<UnityEngine.AudioSource>
+struct InstanceInvokerBase_1_t91AFA53A92E91CDF2F3148E734AA3429FEC33F6A  : public InvokerBase_t7EAFB932168B4166A9D41BF15E3DF2160743B778
 {
 };
 
@@ -742,6 +757,11 @@ struct Void_t4861ACF8F4594C3437BB48B6E56783494B843915
 	};
 };
 
+// Unity.VisualScripting.InstanceActionInvokerBase`1<UnityEngine.AudioSource>
+struct InstanceActionInvokerBase_1_tEA50E7D55D2173EBA389154FFD83A724F45B942B  : public InstanceInvokerBase_1_t91AFA53A92E91CDF2F3148E734AA3429FEC33F6A
+{
+};
+
 // Unity.VisualScripting.InstanceActionInvokerBase`1<UnityEngine.GameObject>
 struct InstanceActionInvokerBase_1_t61A411EF733C7DB8314C6C8D29B8AA058856C625  : public InstanceInvokerBase_1_t2987E485B0AAA0125048A5F179D4D4DB97279982
 {
@@ -866,6 +886,13 @@ struct RuntimeTypeHandle_t332A452B8B6179E4469B69525D0FE82A88030F7B
 {
 	// System.IntPtr System.RuntimeTypeHandle::value
 	intptr_t ___value_0;
+};
+
+// Unity.VisualScripting.InstanceActionInvoker`1<UnityEngine.AudioSource>
+struct InstanceActionInvoker_1_t723E9C952955BF00E5B58455638A7FC51A6311FF  : public InstanceActionInvokerBase_1_tEA50E7D55D2173EBA389154FFD83A724F45B942B
+{
+	// System.Action`1<TTarget> Unity.VisualScripting.InstanceActionInvoker`1::invoke
+	Action_1_t8E17A00BD7C4683736E546D719017D67E0CE6319* ___invoke_2;
 };
 
 // Unity.VisualScripting.InstanceActionInvoker`2<UnityEngine.GameObject,System.Boolean>
@@ -1225,8 +1252,23 @@ struct Type_t_StaticFields
 	MemberFilter_tF644F1AE82F611B677CE1964D5A3277DDA21D553* ___FilterNameIgnoreCase_6;
 };
 
+// UnityEngine.Behaviour
+struct Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA  : public Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3
+{
+};
+
 // UnityEngine.Transform
 struct Transform_tB27202C6F4E36D225EE28A13E4D662BF99785DB1  : public Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3
+{
+};
+
+// UnityEngine.AudioBehaviour
+struct AudioBehaviour_t2DC0BEF7B020C952F3D2DA5AAAC88501C7EEB941  : public Behaviour_t01970CFBBA658497AE30F311C447DB0440BAB7FA
+{
+};
+
+// UnityEngine.AudioSource
+struct AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299  : public AudioBehaviour_t2DC0BEF7B020C952F3D2DA5AAAC88501C7EEB941
 {
 };
 #ifdef __clang__
@@ -1324,10 +1366,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InstanceActionInvoker_2__ctor_mD68F2B9AE
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InstancePropertyAccessor_2__ctor_mD5AF17A97B0A4D95DE93168C58916FE63DE445EA_gshared (InstancePropertyAccessor_2_tB94CEF8255E4290E103DFC4E566E9FD12CBCDA19* __this, PropertyInfo_t* ___propertyInfo0, const RuntimeMethod* method) ;
 // System.Object Unity.VisualScripting.InstancePropertyAccessor`2<System.Object,System.Boolean>::GetValue(System.Object)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR RuntimeObject* InstancePropertyAccessor_2_GetValue_mA5B80CB8B6737EF75F38C0E469F9B58DECB4A2EF_gshared (InstancePropertyAccessor_2_tB94CEF8255E4290E103DFC4E566E9FD12CBCDA19* __this, RuntimeObject* ___target0, const RuntimeMethod* method) ;
-// System.Void Unity.VisualScripting.StaticFunctionInvoker`2<System.Object,System.Object>::.ctor(System.Reflection.MethodInfo)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void StaticFunctionInvoker_2__ctor_m54B7BE4C7434418AA96942970CF11010C72E6FEA_gshared (StaticFunctionInvoker_2_tBAE7295F7280153E424B6B5787986C979047CC1D* __this, MethodInfo_t* ___methodInfo0, const RuntimeMethod* method) ;
+// System.Void Unity.VisualScripting.InstanceActionInvoker`1<System.Object>::.ctor(System.Reflection.MethodInfo)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InstanceActionInvoker_1__ctor_m7A113F40D9831E89C4A3D12BD2BEFAF4541AFECE_gshared (InstanceActionInvoker_1_t7EABE4654E36AC938BF4EFE08D82D364745C5286* __this, MethodInfo_t* ___methodInfo0, const RuntimeMethod* method) ;
 // System.Void Unity.VisualScripting.InstanceFunctionInvoker`4<System.Object,System.Object,System.Boolean,System.Object>::.ctor(System.Reflection.MethodInfo)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void InstanceFunctionInvoker_4__ctor_m6796615648C62A2CABF4029DAEC7B48FE4BBB7E3_gshared (InstanceFunctionInvoker_4_t86BE82CD5F5FF49D678C1D5B34FAB6E8A8B532B6* __this, MethodInfo_t* ___methodInfo0, const RuntimeMethod* method) ;
+// System.Void Unity.VisualScripting.StaticFunctionInvoker`2<System.Object,System.Object>::.ctor(System.Reflection.MethodInfo)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void StaticFunctionInvoker_2__ctor_m54B7BE4C7434418AA96942970CF11010C72E6FEA_gshared (StaticFunctionInvoker_2_tBAE7295F7280153E424B6B5787986C979047CC1D* __this, MethodInfo_t* ___methodInfo0, const RuntimeMethod* method) ;
 
 // System.Boolean System.String::op_Equality(System.String,System.String)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool String_op_Equality_m0D685A924E5CD78078F248ED1726DA5A9D7D6AC0 (String_t* ___a0, String_t* ___b1, const RuntimeMethod* method) ;
@@ -1685,12 +1729,12 @@ inline RuntimeObject* InstancePropertyAccessor_2_GetValue_mCE196B53D2B862BDDD038
 {
 	return ((  RuntimeObject* (*) (InstancePropertyAccessor_2_t2A26D196B5031538FA065BFF7A0CB38AA7DEF308*, RuntimeObject*, const RuntimeMethod*))InstancePropertyAccessor_2_GetValue_mA5B80CB8B6737EF75F38C0E469F9B58DECB4A2EF_gshared)(__this, ___target0, method);
 }
-// UnityEngine.GameObject UnityEngine.GameObject::FindGameObjectWithTag(System.String)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* GameObject_FindGameObjectWithTag_m17078A0823CA9699710251C617B95D04D57098A9 (String_t* ___tag0, const RuntimeMethod* method) ;
-// System.Void Unity.VisualScripting.StaticFunctionInvoker`2<System.String,UnityEngine.GameObject>::.ctor(System.Reflection.MethodInfo)
-inline void StaticFunctionInvoker_2__ctor_m379E0C6DEEEFFCCB9408ABBF15B30D199385567D (StaticFunctionInvoker_2_t228A96A859DC2841AFCEACA20DC86A09707F35C9* __this, MethodInfo_t* ___methodInfo0, const RuntimeMethod* method)
+// System.Void UnityEngine.AudioSource::Play()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AudioSource_Play_m95DF07111C61D0E0F00257A00384D31531D590C3 (AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299* __this, const RuntimeMethod* method) ;
+// System.Void Unity.VisualScripting.InstanceActionInvoker`1<UnityEngine.AudioSource>::.ctor(System.Reflection.MethodInfo)
+inline void InstanceActionInvoker_1__ctor_mA5E6B67497565E2565F4A264896A8DE60272E96E (InstanceActionInvoker_1_t723E9C952955BF00E5B58455638A7FC51A6311FF* __this, MethodInfo_t* ___methodInfo0, const RuntimeMethod* method)
 {
-	((  void (*) (StaticFunctionInvoker_2_t228A96A859DC2841AFCEACA20DC86A09707F35C9*, MethodInfo_t*, const RuntimeMethod*))StaticFunctionInvoker_2__ctor_m54B7BE4C7434418AA96942970CF11010C72E6FEA_gshared)(__this, ___methodInfo0, method);
+	((  void (*) (InstanceActionInvoker_1_t723E9C952955BF00E5B58455638A7FC51A6311FF*, MethodInfo_t*, const RuntimeMethod*))InstanceActionInvoker_1__ctor_m7A113F40D9831E89C4A3D12BD2BEFAF4541AFECE_gshared)(__this, ___methodInfo0, method);
 }
 // UnityEngine.Component UnityEngine.Component::GetComponentInChildren(System.Type,System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* Component_GetComponentInChildren_m4050899166730E8F6629B895597CF4ECC894B597 (Component_t39FBE53E5EFCF4409111FB22C15FF73717632EC3* __this, Type_t* ___t0, bool ___includeInactive1, const RuntimeMethod* method) ;
@@ -1698,6 +1742,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR Component_t39FBE53E5EFCF4409111FB22C15FF73717
 inline void InstanceFunctionInvoker_4__ctor_m7FE4C0E8714874A99C85DBCB7B2A5E0DFC7401DB (InstanceFunctionInvoker_4_t6DD3FDFE36D6169C82449D913DB506E6A9BD1364* __this, MethodInfo_t* ___methodInfo0, const RuntimeMethod* method)
 {
 	((  void (*) (InstanceFunctionInvoker_4_t6DD3FDFE36D6169C82449D913DB506E6A9BD1364*, MethodInfo_t*, const RuntimeMethod*))InstanceFunctionInvoker_4__ctor_m6796615648C62A2CABF4029DAEC7B48FE4BBB7E3_gshared)(__this, ___methodInfo0, method);
+}
+// UnityEngine.GameObject UnityEngine.GameObject::FindGameObjectWithTag(System.String)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* GameObject_FindGameObjectWithTag_m17078A0823CA9699710251C617B95D04D57098A9 (String_t* ___tag0, const RuntimeMethod* method) ;
+// System.Void Unity.VisualScripting.StaticFunctionInvoker`2<System.String,UnityEngine.GameObject>::.ctor(System.Reflection.MethodInfo)
+inline void StaticFunctionInvoker_2__ctor_m379E0C6DEEEFFCCB9408ABBF15B30D199385567D (StaticFunctionInvoker_2_t228A96A859DC2841AFCEACA20DC86A09707F35C9* __this, MethodInfo_t* ___methodInfo0, const RuntimeMethod* method)
+{
+	((  void (*) (StaticFunctionInvoker_2_t228A96A859DC2841AFCEACA20DC86A09707F35C9*, MethodInfo_t*, const RuntimeMethod*))StaticFunctionInvoker_2__ctor_m54B7BE4C7434418AA96942970CF11010C72E6FEA_gshared)(__this, ___methodInfo0, method);
 }
 // System.Void System.Object::.ctor()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Object__ctor_mE837C6B9FA8C6D5D109F4B2EC885D79919AC0EA2 (RuntimeObject* __this, const RuntimeMethod* method) ;
@@ -37080,38 +37131,34 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AotStubs_UnityEngine_GameObject_activeSe
 		return;
 	}
 }
-// System.Void Unity.VisualScripting.Generated.Aot.AotStubs::UnityEngine_GameObject_FindGameObjectWithTag()
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AotStubs_UnityEngine_GameObject_FindGameObjectWithTag_m05A8DE852BE364B72F9ECD43B59D5531442502CB (const RuntimeMethod* method) 
+// System.Void Unity.VisualScripting.Generated.Aot.AotStubs::UnityEngine_AudioSource_Play()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AotStubs_UnityEngine_AudioSource_Play_mDCAE8E02EDCE93DA8D8A821E97862D68C38D621E (const RuntimeMethod* method) 
 {
 	static bool s_Il2CppMethodInitialized;
 	if (!s_Il2CppMethodInitialized)
 	{
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&StaticFunctionInvoker_2__ctor_m379E0C6DEEEFFCCB9408ABBF15B30D199385567D_RuntimeMethod_var);
-		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&StaticFunctionInvoker_2_t228A96A859DC2841AFCEACA20DC86A09707F35C9_il2cpp_TypeInfo_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&InstanceActionInvoker_1__ctor_mA5E6B67497565E2565F4A264896A8DE60272E96E_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&InstanceActionInvoker_1_t723E9C952955BF00E5B58455638A7FC51A6311FF_il2cpp_TypeInfo_var);
 		s_Il2CppMethodInitialized = true;
 	}
-	String_t* V_0 = NULL;
 	{
-		// string arg0 = default(string);
-		V_0 = (String_t*)NULL;
-		// global::UnityEngine.GameObject.FindGameObjectWithTag(arg0);
-		String_t* L_0 = V_0;
-		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1;
-		L_1 = GameObject_FindGameObjectWithTag_m17078A0823CA9699710251C617B95D04D57098A9(L_0, NULL);
-		// global::Unity.VisualScripting.StaticFunctionInvoker<string, UnityEngine.GameObject> optimized = new global::Unity.VisualScripting.StaticFunctionInvoker<string, UnityEngine.GameObject>(default(global::System.Reflection.MethodInfo));
-		StaticFunctionInvoker_2_t228A96A859DC2841AFCEACA20DC86A09707F35C9* L_2 = (StaticFunctionInvoker_2_t228A96A859DC2841AFCEACA20DC86A09707F35C9*)il2cpp_codegen_object_new(StaticFunctionInvoker_2_t228A96A859DC2841AFCEACA20DC86A09707F35C9_il2cpp_TypeInfo_var);
-		NullCheck(L_2);
-		StaticFunctionInvoker_2__ctor_m379E0C6DEEEFFCCB9408ABBF15B30D199385567D(L_2, (MethodInfo_t*)NULL, StaticFunctionInvoker_2__ctor_m379E0C6DEEEFFCCB9408ABBF15B30D199385567D_RuntimeMethod_var);
-		// optimized.Invoke(null, arg0);
-		StaticFunctionInvoker_2_t228A96A859DC2841AFCEACA20DC86A09707F35C9* L_3 = L_2;
-		String_t* L_4 = V_0;
-		NullCheck(L_3);
-		RuntimeObject* L_5;
-		L_5 = VirtualFuncInvoker2< RuntimeObject*, RuntimeObject*, RuntimeObject* >::Invoke(15 /* System.Object Unity.VisualScripting.InvokerBase::Invoke(System.Object,System.Object) */, L_3, NULL, L_4);
+		// global::UnityEngine.AudioSource target = default(global::UnityEngine.AudioSource);
+		// target.Play();
+		NullCheck((AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299*)NULL);
+		AudioSource_Play_m95DF07111C61D0E0F00257A00384D31531D590C3((AudioSource_t871AC2272F896738252F04EE949AEF5B241D3299*)NULL, NULL);
+		// global::Unity.VisualScripting.InstanceActionInvoker<UnityEngine.AudioSource> optimized = new global::Unity.VisualScripting.InstanceActionInvoker<UnityEngine.AudioSource>(default(global::System.Reflection.MethodInfo));
+		InstanceActionInvoker_1_t723E9C952955BF00E5B58455638A7FC51A6311FF* L_0 = (InstanceActionInvoker_1_t723E9C952955BF00E5B58455638A7FC51A6311FF*)il2cpp_codegen_object_new(InstanceActionInvoker_1_t723E9C952955BF00E5B58455638A7FC51A6311FF_il2cpp_TypeInfo_var);
+		NullCheck(L_0);
+		InstanceActionInvoker_1__ctor_mA5E6B67497565E2565F4A264896A8DE60272E96E(L_0, (MethodInfo_t*)NULL, InstanceActionInvoker_1__ctor_mA5E6B67497565E2565F4A264896A8DE60272E96E_RuntimeMethod_var);
+		// optimized.Invoke(default(global::UnityEngine.AudioSource));
+		InstanceActionInvoker_1_t723E9C952955BF00E5B58455638A7FC51A6311FF* L_1 = L_0;
+		NullCheck(L_1);
+		RuntimeObject* L_2;
+		L_2 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(14 /* System.Object Unity.VisualScripting.InvokerBase::Invoke(System.Object) */, L_1, NULL);
 		// optimized.Invoke(default(object[]));
-		NullCheck(L_3);
-		RuntimeObject* L_6;
-		L_6 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(14 /* System.Object Unity.VisualScripting.InvokerBase::Invoke(System.Object) */, L_3, NULL);
+		NullCheck(L_1);
+		RuntimeObject* L_3;
+		L_3 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(14 /* System.Object Unity.VisualScripting.InvokerBase::Invoke(System.Object) */, L_1, NULL);
 		// }
 		return;
 	}
@@ -37158,6 +37205,42 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AotStubs_UnityEngine_Component_GetCompon
 		NullCheck(L_4);
 		RuntimeObject* L_10;
 		L_10 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(14 /* System.Object Unity.VisualScripting.InvokerBase::Invoke(System.Object) */, L_4, NULL);
+		// }
+		return;
+	}
+}
+// System.Void Unity.VisualScripting.Generated.Aot.AotStubs::UnityEngine_GameObject_FindGameObjectWithTag()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AotStubs_UnityEngine_GameObject_FindGameObjectWithTag_m05A8DE852BE364B72F9ECD43B59D5531442502CB (const RuntimeMethod* method) 
+{
+	static bool s_Il2CppMethodInitialized;
+	if (!s_Il2CppMethodInitialized)
+	{
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&StaticFunctionInvoker_2__ctor_m379E0C6DEEEFFCCB9408ABBF15B30D199385567D_RuntimeMethod_var);
+		il2cpp_codegen_initialize_runtime_metadata((uintptr_t*)&StaticFunctionInvoker_2_t228A96A859DC2841AFCEACA20DC86A09707F35C9_il2cpp_TypeInfo_var);
+		s_Il2CppMethodInitialized = true;
+	}
+	String_t* V_0 = NULL;
+	{
+		// string arg0 = default(string);
+		V_0 = (String_t*)NULL;
+		// global::UnityEngine.GameObject.FindGameObjectWithTag(arg0);
+		String_t* L_0 = V_0;
+		GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* L_1;
+		L_1 = GameObject_FindGameObjectWithTag_m17078A0823CA9699710251C617B95D04D57098A9(L_0, NULL);
+		// global::Unity.VisualScripting.StaticFunctionInvoker<string, UnityEngine.GameObject> optimized = new global::Unity.VisualScripting.StaticFunctionInvoker<string, UnityEngine.GameObject>(default(global::System.Reflection.MethodInfo));
+		StaticFunctionInvoker_2_t228A96A859DC2841AFCEACA20DC86A09707F35C9* L_2 = (StaticFunctionInvoker_2_t228A96A859DC2841AFCEACA20DC86A09707F35C9*)il2cpp_codegen_object_new(StaticFunctionInvoker_2_t228A96A859DC2841AFCEACA20DC86A09707F35C9_il2cpp_TypeInfo_var);
+		NullCheck(L_2);
+		StaticFunctionInvoker_2__ctor_m379E0C6DEEEFFCCB9408ABBF15B30D199385567D(L_2, (MethodInfo_t*)NULL, StaticFunctionInvoker_2__ctor_m379E0C6DEEEFFCCB9408ABBF15B30D199385567D_RuntimeMethod_var);
+		// optimized.Invoke(null, arg0);
+		StaticFunctionInvoker_2_t228A96A859DC2841AFCEACA20DC86A09707F35C9* L_3 = L_2;
+		String_t* L_4 = V_0;
+		NullCheck(L_3);
+		RuntimeObject* L_5;
+		L_5 = VirtualFuncInvoker2< RuntimeObject*, RuntimeObject*, RuntimeObject* >::Invoke(15 /* System.Object Unity.VisualScripting.InvokerBase::Invoke(System.Object,System.Object) */, L_3, NULL, L_4);
+		// optimized.Invoke(default(object[]));
+		NullCheck(L_3);
+		RuntimeObject* L_6;
+		L_6 = VirtualFuncInvoker1< RuntimeObject*, RuntimeObject* >::Invoke(14 /* System.Object Unity.VisualScripting.InvokerBase::Invoke(System.Object) */, L_3, NULL);
 		// }
 		return;
 	}
