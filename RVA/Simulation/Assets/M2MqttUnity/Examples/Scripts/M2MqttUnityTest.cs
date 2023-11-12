@@ -53,15 +53,12 @@ namespace M2MqttUnity.Examples
         public Button testPublishButton;
         public Button clearButton;
 
-        public YourInstantiationScript scriptReference;
-
         private List<string> eventMessages = new List<string>();
         private bool updateUI = false;
 
         public void TestPublish()
         {
             client.Publish("M2MQTT_Unity/test", System.Text.Encoding.UTF8.GetBytes("Test message"), MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE, false);
-            Debug.Log("Test message published");
             AddUiMessage("Test message published.");
         }
 
@@ -109,14 +106,12 @@ namespace M2MqttUnity.Examples
         {
             base.OnConnecting();
             SetUiMessage("Connecting to broker on " + brokerAddress + ":" + brokerPort.ToString() + "...\n");
-            Debug.Log("Connecting to broker on " + brokerAddress + ":" + brokerPort.ToString() + "...\n");
         }
 
         protected override void OnConnected()
         {
             base.OnConnected();
             SetUiMessage("Connected to broker on " + brokerAddress + "\n");
-            Debug.Log("Connected to broker on " + brokerAddress + "\n");
 
             if (autoTest)
             {
@@ -137,19 +132,16 @@ namespace M2MqttUnity.Examples
         protected override void OnConnectionFailed(string errorMessage)
         {
             AddUiMessage("CONNECTION FAILED! " + errorMessage);
-            Debug.LogError("CONNECTION FAILED! " + errorMessage);
         }
 
         protected override void OnDisconnected()
         {
             AddUiMessage("Disconnected.");
-            Debug.Log("Disconnected.");
         }
 
         protected override void OnConnectionLost()
         {
             AddUiMessage("CONNECTION LOST!");
-            Debug.LogError("CONNECTION LOST!");
         }
 
         private void UpdateUI()
@@ -203,8 +195,6 @@ namespace M2MqttUnity.Examples
         protected override void Start()
         {
             SetUiMessage("Ready.");
-            Debug.Log("Ready.");
-            scriptReference = GameObject.FindObjectOfType<YourInstantiationScript>();
             updateUI = true;
             base.Start();
         }
@@ -212,9 +202,7 @@ namespace M2MqttUnity.Examples
         protected override void DecodeMessage(string topic, byte[] message)
         {
             string msg = System.Text.Encoding.UTF8.GetString(message);
-            Debug.Log("Received: " + msg);
             StoreMessage(msg);
-            scriptReference.DisplayWarningSystem();
 
             if (topic == "M2MQTT_Unity/test")
             {

@@ -11961,6 +11961,13 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t Marshal_BufferToBSTR_m7333850BBBD67F
 	using namespace il2cpp::icalls;
 	return ((Marshal_BufferToBSTR_m7333850BBBD67FEE43376E81FAC9FF96754FA9AD_ftn)mscorlib::System::Runtime::InteropServices::Marshal::BufferToBSTR) (___ptr0, ___slen1);
 }
+// System.IntPtr System.Runtime.InteropServices.Marshal::UnsafeAddrOfPinnedArrayElement(System.Array,System.Int32)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR intptr_t Marshal_UnsafeAddrOfPinnedArrayElement_m313692F43E31BAF62F5AA3BA0E8F69C0310F2ECB (RuntimeArray* ___arr0, int32_t ___index1, const RuntimeMethod* method) 
+{
+	typedef intptr_t (*Marshal_UnsafeAddrOfPinnedArrayElement_m313692F43E31BAF62F5AA3BA0E8F69C0310F2ECB_ftn) (RuntimeArray*, int32_t);
+	using namespace il2cpp::icalls;
+	return ((Marshal_UnsafeAddrOfPinnedArrayElement_m313692F43E31BAF62F5AA3BA0E8F69C0310F2ECB_ftn)mscorlib::System::Runtime::InteropServices::Marshal::UnsafeAddrOfPinnedArrayElement) (___arr0, ___index1);
+}
 // System.Void System.Runtime.InteropServices.Marshal::WriteByte(System.IntPtr,System.Int32,System.Byte)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void Marshal_WriteByte_m48AAE1576340281227A2A76DCA04DE10D611AE96 (intptr_t ___ptr0, int32_t ___ofs1, uint8_t ___val2, const RuntimeMethod* method) 
 {
