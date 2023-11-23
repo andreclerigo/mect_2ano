@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,7 @@ public class WarningSystemScriptV5 : MonoBehaviour
     
     void Start()
     {
-
+        Debug.Log("500ms");
     }
 
     public void DisplayWarningSystem()
@@ -38,7 +39,7 @@ public class WarningSystemScriptV5 : MonoBehaviour
 
     private IEnumerator DestroyAfterDelay()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         //if (warningSystemInstance != null)
         //{
             //Destroy(warningSystemInstance);
