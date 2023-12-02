@@ -16,7 +16,7 @@ namespace M2MqttUnity.Examples
         [Tooltip("Set this to true to perform a testing cycle automatically on startup")]
         public bool autoTest = false;
 
-        public WarningSystemScriptV5 scriptReference;
+        public WarningSystemScriptV6 scriptReference;
 
         private List<string> eventMessages = new List<string>();
 
@@ -75,7 +75,7 @@ namespace M2MqttUnity.Examples
 
         protected override void Start()
         {
-            scriptReference = GameObject.FindObjectOfType<WarningSystemScriptV5>();
+            scriptReference = GameObject.FindObjectOfType<WarningSystemScriptV6>();
             base.Start();
             Debug.Log("Ready.");
         }
@@ -94,7 +94,7 @@ namespace M2MqttUnity.Examples
                 {
                     latitude = json["fields"]["denm"]["management"]["eventPosition"]["latitude"].Value<float>();
                     longitude =  json["fields"]["denm"]["management"]["eventPosition"]["longitude"].Value<float>();
-                    Debug.Log("[DENM] Latitude: " + latitude + ", Longitude: " + longitude);
+                    //Debug.Log("[DENM] Latitude: " + latitude + ", Longitude: " + longitude);
                     
                     scriptReference.SetDENMCoordinates(latitude, longitude);
                     scriptReference.DisplayWarningSystem();
@@ -104,7 +104,7 @@ namespace M2MqttUnity.Examples
                 {
                     latitude = json["vam"]["vamParameters"]["referencePosition"]["latitude"].Value<float>();
                     longitude =  json["vam"]["vamParameters"]["referencePosition"]["longitude"].Value<float>();
-                    Debug.Log("[VAM] Latitude: " + latitude + ", Longitude: " + longitude);
+                    //Debug.Log("[VAM] Latitude: " + latitude + ", Longitude: " + longitude);
 
                     scriptReference.SetVAMCoordinates(latitude, longitude);
                 }

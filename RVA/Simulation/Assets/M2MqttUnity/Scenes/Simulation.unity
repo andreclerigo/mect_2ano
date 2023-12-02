@@ -711,7 +711,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1081187065}
-  - component: {fileID: 1081187064}
+  - component: {fileID: 1081187069}
+  - component: {fileID: 1081187068}
   - component: {fileID: 1081187063}
   - component: {fileID: 1081187067}
   - component: {fileID: 1081187066}
@@ -744,22 +745,7 @@ MonoBehaviour:
   mqttUserName: atcll-services
   mqttPassword: bWAoaB&6kQ#pjE9@Dv2opvjDiyxKsw
   autoTest: 0
-  scriptReference: {fileID: 1081187064}
---- !u!114 &1081187064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1081187062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbdfc256671cd0549a3ee21e4336ce5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  warningSystem: {fileID: 544804158865543218, guid: a23b90681494138448d00f67a428ef63,
-    type: 3}
-  compassReference: {fileID: 1081187066}
+  scriptReference: {fileID: 1081187068}
 --- !u!4 &1081187065
 Transform:
   m_ObjectHideFlags: 0
@@ -810,7 +796,35 @@ MonoBehaviour:
   mqttUserName: atcll-services
   mqttPassword: bWAoaB&6kQ#pjE9@Dv2opvjDiyxKsw
   autoTest: 0
-  scriptReference: {fileID: 1081187064}
+  scriptReference: {fileID: 1081187069}
+--- !u!114 &1081187068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081187062}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 165ed560fb573e84bac679c932a8ad1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  warningSystem: {fileID: 1661550400}
+--- !u!114 &1081187069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081187062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbdfc256671cd0549a3ee21e4336ce5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  warningSystem: {fileID: 544804158865543218, guid: a23b90681494138448d00f67a428ef63,
+    type: 3}
+  compassReference: {fileID: 1081187066}
 --- !u!1 &1125729850
 GameObject:
   m_ObjectHideFlags: 0
@@ -1158,6 +1172,12 @@ MonoBehaviour:
     FigmaScreenName: Window
     ParentSectionNodeId: 
   m_Sections: []
+--- !u!1 &1661550400 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 544804158865543218, guid: a23b90681494138448d00f67a428ef63,
+    type: 3}
+  m_PrefabInstance: {fileID: 544804158571957826}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1666355530 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 942627301633815611, guid: 398ee1c84048d68479a4ca31600e05d2,
