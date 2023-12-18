@@ -16,7 +16,7 @@ namespace M2MqttUnity.Examples
         [Tooltip("Set this to true to perform a testing cycle automatically on startup")]
         public bool autoTest = false;
 
-        public WarningSystemScriptV6 scriptReference;
+        public WarningSystemScriptV7 scriptReference;
 
         private List<string> eventMessages = new List<string>();
 
@@ -75,7 +75,7 @@ namespace M2MqttUnity.Examples
 
         protected override void Start()
         {
-            scriptReference = GameObject.FindObjectOfType<WarningSystemScriptV6>();
+            scriptReference = GameObject.FindObjectOfType<WarningSystemScriptV7>();
             base.Start();
             Debug.Log("Ready.");
         }
@@ -87,13 +87,13 @@ namespace M2MqttUnity.Examples
             try {
                 JObject json = JObject.Parse(msg);
                 
-                float latitude = 0f; 
-                float longitude = 0f;
+                double latitude = 0.0; 
+                double longitude = 0.0;
 
                 if (topic == "denm_decoded")
                 {
-                    latitude = json["fields"]["denm"]["management"]["eventPosition"]["latitude"].Value<float>();
-                    longitude =  json["fields"]["denm"]["management"]["eventPosition"]["longitude"].Value<float>();
+                    latitude = json["fields"]["denm"]["management"]["eventPosition"]["latitude"].Value<double>();
+                    longitude =  json["fields"]["denm"]["management"]["eventPosition"]["longitude"].Value<double>();
                     //Debug.Log("[DENM] Latitude: " + latitude + ", Longitude: " + longitude);
                     
                     scriptReference.SetDENMCoordinates(latitude, longitude);
@@ -102,8 +102,11 @@ namespace M2MqttUnity.Examples
 
                 if (topic == "vam_decoded")
                 {
-                    latitude = json["vam"]["vamParameters"]["referencePosition"]["latitude"].Value<float>();
-                    longitude =  json["vam"]["vamParameters"]["referencePosition"]["longitude"].Value<float>();
+                    latitude = json["vam"]["vamParameters"]["referencePosition"]["latitude"].Value<double>();
+                    longitude =  json["vam"]["vamParameters"]["referencePosition"]["longitude"].Value<double>();
+
+                    latitude = latitude / 10000000;
+                    longitude = longitude / 10000000;
                     //Debug.Log("[VAM] Latitude: " + latitude + ", Longitude: " + longitude);
 
                     scriptReference.SetVAMCoordinates(latitude, longitude);

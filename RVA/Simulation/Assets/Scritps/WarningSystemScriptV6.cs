@@ -1,17 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class WarningSystemScriptV6 : MonoBehaviour
 {
     public GameObject warningSystem;
+    public TMP_Text denmText;
     private GameObject warningSystemInstance;
     private Coroutine destroyCoroutine;
-    private float denmLatitude = 0f;
-    private float denmLongitude = 0f;
-    private float vamLatitude = 0f;
-    private float vamLongitude = 0f;
-    private float bearing = 0f;
+    private double denmLatitude = 0.0;
+    private double denmLongitude = 0.0;
+    private double vamLatitude = 0.0;
+    private double vamLongitude = 0.0;
+    private double bearing = 0.0;
     private float compassBearing = 0f;
     private bool isInstantiated = false;
 
@@ -24,12 +27,18 @@ public class WarningSystemScriptV6 : MonoBehaviour
 
     public void DisplayWarningSystem()
     {
-        /*
-        bearing = CalculateBearing(new Vector2(vamLatitude, vamLongitude), new Vector2(denmLatitude, denmLongitude));
+        // Stop the coroutine that destroys the warning system 
+        if (destroyCoroutine != null)
+        {
+            StopCoroutine(destroyCoroutine);
+        }
+
+        bearing = CalculateBearing(vamLatitude, vamLongitude, denmLatitude, denmLongitude);
         Debug.Log("Collision Bearing: " + bearing);
+        denmText.text = "DENM: " + Mathf.RoundToInt((float)bearing) + " degrees";
 
         compassBearing = compassReference.GetCompassBearing();
-        Debug.Log("Compass Bearing: " + compassBearing);
+        //Debug.Log("Compass Bearing: " + compassBearing);
 
         // Check if the VRU is approaching the hazard
         if (compassBearing >= (bearing - 90) && compassBearing <= (bearing + 90))
@@ -55,24 +64,25 @@ public class WarningSystemScriptV6 : MonoBehaviour
         }
 
         // Start the coroutine to destroy the warning system after a delay
-        if (destroyCoroutine != null)
-        {
-            StopCoroutine(destroyCoroutine);
-        }
         destroyCoroutine = StartCoroutine(DestroyAfterDelay());
-        */
+        
+
+        /*
+        // Stop the coroutine that destroys the warning system 
         if (destroyCoroutine != null)
         {
             StopCoroutine(destroyCoroutine);
         }
+
+        bearing = CalculateBearing(vamLatitude, vamLongitude, denmLatitude, denmLongitude);
+        Debug.Log("Collision Bearing: " + bearing);
+        denmText.text = "DENM: " + Mathf.RoundToInt((float)bearing) + " degrees";
+
+        compassBearing = compassReference.GetCompassBearing();
+        //Debug.Log("Compass Bearing: " + compassBearing);
 
         if (!isInstantiated)
         {
-            bearing = CalculateBearing(new Vector2(vamLatitude, vamLongitude), new Vector2(denmLatitude, denmLongitude));
-            Debug.Log("Bearing: " + bearing);
-
-            compassBearing = compassReference.GetCompassBearing();
-            Debug.Log("Compass Bearing: " + compassBearing);
             
             // If the compassBearing is between bearing - 90 and bearing + 90, then the vru is approaching the hazard
             if (compassBearing >= (bearing - 90) && compassBearing <= (bearing + 90))
@@ -87,39 +97,42 @@ public class WarningSystemScriptV6 : MonoBehaviour
             }
         }
 
+        // Start the coroutine to destroy the warning system after a delay
         destroyCoroutine = StartCoroutine(DestroyAfterDelay());
+        */
     }
 
-    public void SetDENMCoordinates(float latitude, float longitude)
+    public void SetDENMCoordinates(double latitude, double longitude)
     {
         denmLatitude = latitude;
         denmLongitude = longitude;
     }
 
-    public void SetVAMCoordinates(float latitude, float longitude)
+    public void SetVAMCoordinates(double latitude, double longitude)
     {
         vamLatitude = latitude;
         vamLongitude = longitude;
     }
 
-    public static float CalculateBearing(Vector2 pointA, Vector2 pointB)
+    public static double CalculateBearing(double pointALat, double pointALong, double pointBLat, double pointBLong)
     {
-        float lat1 = pointA.x * Mathf.Deg2Rad;
-        float lon1 = pointA.y * Mathf.Deg2Rad;
-        float lat2 = pointB.x * Mathf.Deg2Rad;
-        float lon2 = pointB.y * Mathf.Deg2Rad;
+        //Debug.Log("pointALat: " + pointALat + ", pointALong: " + pointALong + ", pointBLat: " + pointBLat + ", pointBLong: " + pointBLong);
+        double lat1 = pointALat * Math.PI / 180.0;
+        double lon1 = pointALong * Math.PI / 180.0;
+        double lat2 = pointBLat * Math.PI / 180.0;
+        double lon2 = pointBLong * Math.PI / 180.0;
 
-        float dLon = lon2 - lon1;
-        float y = Mathf.Sin(dLon) * Mathf.Cos(lat2);
-        float x = Mathf.Cos(lat1) * Mathf.Sin(lat2) - Mathf.Sin(lat1) * Mathf.Cos(lat2) * Mathf.Cos(dLon);
-        float bearing = Mathf.Atan2(y, x) * Mathf.Rad2Deg;
+        double dLon = lon2 - lon1;
+        double y = Math.Sin(dLon) * Math.Cos(lat2);
+        double x = Math.Cos(lat1) * Math.Sin(lat2) - Math.Sin(lat1) * Math.Cos(lat2) * Math.Cos(dLon);
+        double bearing = Math.Atan2(y, x) * 180.0 / Math.PI;
 
-        return (bearing + 360) % 360; // Normalize to 0-360
+        return (bearing + 360) % 360;
     }
 
     private IEnumerator DestroyAfterDelay()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         if (warningSystemInstance != null)
         {
             Destroy(warningSystemInstance);

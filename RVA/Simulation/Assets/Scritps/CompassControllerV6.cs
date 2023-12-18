@@ -7,22 +7,50 @@ using TMPro;
 public class CompassControllerV6 : MonoBehaviour
 {
     private float bearing = 0f;
-    public TMP_Text orientationText; // Assign your TextMeshPro element in the Inspector
+    public TMP_Text orientationText;
 
     void Start()
     {
         // Check if the device supports the compass sensor
         StartCoroutine(InitializeLocation());
         Input.compass.enabled = true;
+
+         // Enable the gyroscope
+        if (SystemInfo.supportsGyroscope)
+        {
+            Input.gyro.enabled = true;
+        }
+        else
+        {
+            Debug.Log("Gyroscope not supported on this device.");
+        }
     }
 
     void Update()
     {
-        if (Input.compass.enabled)
-        {   
-            bearing = Input.compass.trueHeading;
+        if (Input.compass.enabled && Input.gyro.enabled)
+        {
+            // Get the true heading from the compass
+            float compassHeading = Input.compass.trueHeading;
 
-            // Display the bearing
+            // Get the device's rotation in Euler angles
+            Quaternion deviceRotation = Input.gyro.attitude;
+            Vector3 rotationEuler = deviceRotation.eulerAngles;
+
+            // Determine if the device is held flat or upright
+            if (Mathf.Abs(rotationEuler.x) < 45 || Mathf.Abs(rotationEuler.x) > 135)
+            {
+                bearing = compassHeading;
+            }
+            else
+            {
+                bearing = compassHeading - rotationEuler.y;
+            }
+
+            // Normalize the adjusted heading to be within 0 to 360 degrees
+            bearing = (bearing + 360) % 360;
+
+            // Display the adjusted bearing
             orientationText.text = "Orientation: " + Mathf.Round(bearing).ToString("F0") + " degrees";
         }
     }
