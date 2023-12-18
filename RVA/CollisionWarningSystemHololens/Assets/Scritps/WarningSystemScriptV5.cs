@@ -23,7 +23,7 @@ public class WarningSystemScriptV5 : MonoBehaviour
 
         if (!isInstantiated)
         {
-            // Instantiate the warningSystem GameObject as a child of ButtonCanvas
+            // Instantiate the warningSystem GameObject as a child of Canvas
             warningSystemInstance = Instantiate(warningSystem, GameObject.Find("MRTK XR Rig/Camera Offset/Main Camera/Canvas").transform);
             // Adjust the rect transform of the warningSystemInstance
             RectTransform rectTransform = warningSystemInstance.GetComponent<RectTransform>();
