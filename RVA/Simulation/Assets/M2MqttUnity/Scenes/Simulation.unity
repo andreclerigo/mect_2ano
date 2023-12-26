@@ -488,6 +488,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 95629998500851910, guid: 02e641040fb499c49a848e40f535164a,
         type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 95629998500851910, guid: 02e641040fb499c49a848e40f535164a,
+        type: 3}
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 1cbbdb5dafec38b49a8828de4e0d921d, type: 2}
@@ -496,10 +501,20 @@ PrefabInstance:
       propertyPath: buttonStartSim
       value: 
       objectReference: {fileID: 1666355530}
+    - target: {fileID: 1294416179648953340, guid: 02e641040fb499c49a848e40f535164a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1636147559367071350, guid: 02e641040fb499c49a848e40f535164a,
         type: 3}
       propertyPath: m_TagString
       value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 7915793699705547069, guid: 02e641040fb499c49a848e40f535164a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8875197600466707233, guid: 02e641040fb499c49a848e40f535164a,
         type: 3}
@@ -842,6 +857,8 @@ GameObject:
   - component: {fileID: 1081187063}
   - component: {fileID: 1081187067}
   - component: {fileID: 1081187066}
+  - component: {fileID: 1081187071}
+  - component: {fileID: 1081187072}
   m_Layer: 0
   m_Name: Scripts
   m_TagString: Untagged
@@ -894,7 +911,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081187062}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 73ae97367346ce846bf736ad14bbe6ac, type: 3}
   m_Name: 
@@ -907,7 +924,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081187062}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71ceaf4edef44ea4d98f0733b3aa3c4f, type: 3}
   m_Name: 
@@ -959,7 +976,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1081187062}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3bd47e6f1f91ed444a1f0af22ebdbbf9, type: 3}
   m_Name: 
@@ -969,6 +986,45 @@ MonoBehaviour:
   denmText: {fileID: 1146951524}
   arrow: {fileID: 1799769402}
   compassReference: {fileID: 1081187066}
+--- !u!114 &1081187071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081187062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a7db74f8cccdfd439fa03a3a4172957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  warningSystem: {fileID: 544804158865543218, guid: a23b90681494138448d00f67a428ef63,
+    type: 3}
+  denmText: {fileID: 1146951524}
+  car: {fileID: 1712042758}
+--- !u!114 &1081187072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1081187062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad201e615e0a13043bb612d54d07f138, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  brokerAddress: atcll-services.nap.av.it.pt
+  brokerPort: 1884
+  isEncrypted: 0
+  certificateName: 
+  connectionDelay: 500
+  timeoutOnConnection: 30000
+  autoConnect: 1
+  mqttUserName: atcll-services
+  mqttPassword: bWAoaB&6kQ#pjE9@Dv2opvjDiyxKsw
+  autoTest: 0
+  scriptReference: {fileID: 1081187071}
 --- !u!1001 &1123106036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1620,6 +1676,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1712042758 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1610265466720824, guid: 02e641040fb499c49a848e40f535164a,
+    type: 3}
+  m_PrefabInstance: {fileID: 272617696}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1799769402 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8771091787928289351, guid: 1d3f9c28f5fc01449a169e5230ec955e,
