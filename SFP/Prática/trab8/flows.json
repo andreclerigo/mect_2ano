@@ -1,0 +1,288 @@
+[
+    {
+        "id": "90bd82ed57ea4666",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "d015ace7d5c39291",
+        "type": "inject",
+        "z": "90bd82ed57ea4666",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "nivel",
+        "payload": "5",
+        "payloadType": "num",
+        "x": 370,
+        "y": 140,
+        "wires": [
+            [
+                "702649861b785978"
+            ]
+        ]
+    },
+    {
+        "id": "4a5f3975c35116f6",
+        "type": "debug",
+        "z": "90bd82ed57ea4666",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "4126fb3a91f02d35",
+        "type": "debug",
+        "z": "90bd82ed57ea4666",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "a7b21bda239f855b",
+        "type": "inject",
+        "z": "90bd82ed57ea4666",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "nivel",
+        "payload": "20",
+        "payloadType": "num",
+        "x": 370,
+        "y": 340,
+        "wires": [
+            [
+                "328fc6e8fbcd50e9",
+                "702649861b785978"
+            ]
+        ]
+    },
+    {
+        "id": "702649861b785978",
+        "type": "switch",
+        "z": "90bd82ed57ea4666",
+        "name": "",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "15",
+                "vt": "num"
+            },
+            {
+                "t": "gt",
+                "v": "25",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 590,
+        "y": 180,
+        "wires": [
+            [
+                "4a5f3975c35116f6"
+            ],
+            [
+                "4126fb3a91f02d35"
+            ]
+        ]
+    },
+    {
+        "id": "328fc6e8fbcd50e9",
+        "type": "function",
+        "z": "90bd82ed57ea4666",
+        "name": "function 1",
+        "func": "var x = context.get('varA')||0;\nmsg.payload = msg.payload + x;\ncontext.set('varA', msg.payload);\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 600,
+        "y": 340,
+        "wires": [
+            [
+                "d682fe08130d3175"
+            ]
+        ]
+    },
+    {
+        "id": "d682fe08130d3175",
+        "type": "debug",
+        "z": "90bd82ed57ea4666",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "2aa662075e31fda8",
+        "type": "http response",
+        "z": "90bd82ed57ea4666",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 830,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "b2b98c2963838503",
+        "type": "http in",
+        "z": "90bd82ed57ea4666",
+        "name": "",
+        "url": "/test",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 360,
+        "y": 520,
+        "wires": [
+            [
+                "d00ba4bf06b765bd"
+            ]
+        ]
+    },
+    {
+        "id": "d00ba4bf06b765bd",
+        "type": "template",
+        "z": "90bd82ed57ea4666",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<html>\nola\n</html>\n",
+        "output": "str",
+        "x": 620,
+        "y": 520,
+        "wires": [
+            [
+                "2aa662075e31fda8"
+            ]
+        ]
+    },
+    {
+        "id": "bbc899bf88eec33a",
+        "type": "mysql",
+        "z": "90bd82ed57ea4666",
+        "mydb": "29a2590ea3ec150c",
+        "name": "",
+        "x": 630,
+        "y": 620,
+        "wires": [
+            [
+                "6b2144b642858d15"
+            ]
+        ]
+    },
+    {
+        "id": "ed8b4f49ee6adbd3",
+        "type": "inject",
+        "z": "90bd82ed57ea4666",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM supervisaoreservatorio",
+        "payload": "",
+        "payloadType": "date",
+        "x": 360,
+        "y": 620,
+        "wires": [
+            [
+                "bbc899bf88eec33a"
+            ]
+        ]
+    },
+    {
+        "id": "6b2144b642858d15",
+        "type": "debug",
+        "z": "90bd82ed57ea4666",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 840,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "29a2590ea3ec150c",
+        "type": "MySQLdatabase",
+        "name": "",
+        "host": "127.0.0.1",
+        "port": "3306",
+        "db": "Reservatorio",
+        "tz": "",
+        "charset": "UTF8"
+    }
+]
