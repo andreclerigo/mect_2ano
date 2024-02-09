@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Simulation.unity
+    path: Assets/M2MqttUnity/Scenes/Simulation.unity
     guid: aab4ad59086a7b147a7f60c475c4def0
   - enabled: 0
     path: Assets/M2MqttUnity/Examples/Scenes/M2MqttUnity_TestXR.unity

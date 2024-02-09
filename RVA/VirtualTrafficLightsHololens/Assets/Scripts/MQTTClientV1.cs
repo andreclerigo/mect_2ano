@@ -1,0 +1,265 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using uPLibrary.Networking.M2Mqtt;
+using uPLibrary.Networking.M2Mqtt.Messages;
+using M2MqttUnity;
+using Newtonsoft.Json.Linq;
+
+
+public class SignalGroupState
+{
+    public int SignalGroup { get; set; }
+    public int EventState { get; set; }
+}
+
+public class MAPEMData
+{
+    public Dictionary<int, List<LaneCoordinates>> LaneCoordinatesDict { get; set; }
+    public double LaneWidth { get; set; }
+    public LaneCoordinates RefPoint { get; set; }
+}
+
+public class LaneCoordinates
+{
+    public double Latitude { get; set; }
+    public double Longitude { get; set; }
+}
+
+public class JSONParser
+{
+    public static MAPEMData ParseMAPEM(string jsonString)
+    {
+        var mapemData = new MAPEMData
+        {
+            LaneCoordinatesDict = new Dictionary<int, List<LaneCoordinates>>()
+        };
+
+        JObject json = JObject.Parse(jsonString);
+        JArray intersections = (JArray)json["intersections"];
+
+        foreach (var intersection in intersections)
+        {
+            // Parse laneWidth and refPoint
+            mapemData.LaneWidth = intersection["laneWidth"].Value<double>();
+            var refPoint = intersection["refPoint"];
+            mapemData.RefPoint = new LaneCoordinates
+            {
+                Latitude = refPoint["lat"].Value<double>(),
+                Longitude = refPoint["long"].Value<double>()
+            };
+
+            // Parse laneSet
+            JArray laneSet = (JArray)intersection["laneSet"];
+            foreach (var lane in laneSet)
+            {
+                int laneId = lane["laneID"].Value<int>();
+                JArray nodes = (JArray)lane["nodeList"]["nodes"];
+
+                var coordinatesList = new List<LaneCoordinates>();
+                foreach (var node in nodes)
+                {
+                    var lat = node["delta"]["node-LatLon"]["lat"].Value<double>();
+                    var lon = node["delta"]["node-LatLon"]["lon"].Value<double>();
+                    coordinatesList.Add(new LaneCoordinates { Latitude = lat, Longitude = lon });
+                }
+
+                if (!mapemData.LaneCoordinatesDict.ContainsKey(laneId))
+                {
+                    mapemData.LaneCoordinatesDict.Add(laneId, coordinatesList);
+                }
+            }
+        }
+
+        return mapemData;
+    }
+
+    public static Dictionary<int, int> ParseSPATEM(string jsonString)
+    {
+        var signalGroupStates = new Dictionary<int, int>();
+
+        JObject json = JObject.Parse(jsonString);
+        JArray intersections = (JArray)json["intersections"];
+
+        foreach (var intersection in intersections)
+        {
+            JArray states = (JArray)intersection["states"];
+            foreach (var state in states)
+            {
+                int signalGroup = state["signalGroup"].Value<int>();
+                int eventState = state["state-time-speed"][0]["eventState"].Value<int>();
+
+                signalGroupStates[signalGroup] = eventState;
+            }
+        }
+
+        return signalGroupStates;
+    }
+}
+
+namespace M2MqttUnity.Examples
+{
+    public class MQTTClientV1 : M2MqttUnityClient
+    {
+        [Tooltip("Set this to true to perform a testing cycle automatically on startup")]
+        public bool autoTest = false;
+
+        public TriggerTrafficLightsV1 scriptReference;
+
+        private List<string> eventMessages = new List<string>();
+
+        public void SetBrokerAddress(string brokerAddress)
+        {
+            this.brokerAddress = brokerAddress;
+        }
+
+        public void SetBrokerPort(string brokerPort)
+        {
+            int.TryParse(brokerPort, out this.brokerPort);
+        }
+
+        public void SetEncrypted(bool isEncrypted)
+        {
+            this.isEncrypted = isEncrypted;
+        }
+
+        protected override void OnConnecting()
+        {
+            base.OnConnecting();
+            Debug.Log("Connecting to broker on " + brokerAddress + ":" + brokerPort.ToString() + "...\n");
+        }
+
+        protected override void OnConnected()
+        {
+            base.OnConnected();
+            Debug.Log("Connected to broker on " + brokerAddress + "\n");
+        }
+
+        protected override void SubscribeTopics()
+        {
+            client.Subscribe(new string[] { "clerigo/mapem" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+            client.Subscribe(new string[] { "clerigo/spatem" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+            client.Subscribe(new string[] { "vam_decoded" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+            client.Subscribe(new string[] { "vam_set_heading" }, new byte[] { MqttMsgBase.QOS_LEVEL_EXACTLY_ONCE });
+        }
+
+        protected override void UnsubscribeTopics()
+        {
+            client.Unsubscribe(new string[] { "M2MQTT_Unity/test" });
+        }
+
+        protected override void OnConnectionFailed(string errorMessage)
+        {
+            Debug.LogError("CONNECTION FAILED! " + errorMessage);
+        }
+
+        protected override void OnDisconnected()
+        {
+            Debug.Log("Disconnected.");
+        }
+
+        protected override void OnConnectionLost()
+        {
+            Debug.LogError("CONNECTION LOST!");
+        }
+
+        protected override void Start()
+        {
+            scriptReference = GameObject.FindObjectOfType<TriggerTrafficLightsV1>();
+            base.Start();
+            Debug.Log("Ready.");
+        }
+
+        protected override void DecodeMessage(string topic, byte[] message)
+        {
+            string msg = System.Text.Encoding.UTF8.GetString(message);
+
+            try {
+                JObject json = JObject.Parse(msg);
+                
+                double latitude = 0.0; 
+                double longitude = 0.0;
+                float heading = 0f;
+
+                if (topic == "clerigo/mapem")
+                {
+                    Debug.Log("[MQTT] Received MAPEM message");
+
+                    MAPEMData mapemData = JSONParser.ParseMAPEM(msg);
+                    scriptReference.SetMAPEM(mapemData);
+                }
+
+                if (topic == "clerigo/spatem")
+                {
+                    Debug.Log("[MQTT] Received SPATEM message");
+
+                    Dictionary<int, int> trafficLightsData = JSONParser.ParseSPATEM(msg);
+                    scriptReference.SetSPATEM(trafficLightsData);
+                }
+
+                if (topic == "vam_decoded")
+                {
+                    latitude = json["vam"]["vamParameters"]["referencePosition"]["latitude"].Value<double>();
+                    longitude =  json["vam"]["vamParameters"]["referencePosition"]["longitude"].Value<double>();
+
+                    latitude = latitude / 10000000;
+                    longitude = longitude / 10000000;
+                    //Debug.Log("[VAM] Latitude: " + latitude + ", Longitude: " + longitude);
+
+                    scriptReference.SetVAMCoordinates(latitude, longitude);
+                }
+                
+                /*
+                if (topic == "vam_set_heading")
+                {
+                    heading = json["heading"].Value<float>();
+                    Debug.Log("[MQTT HEADING] Heading: " + heading);
+
+                    scriptReference.SetHeading(heading);
+                }
+                */
+            } catch (Exception e) {
+                Debug.Log("Failed to parse message on topic: " + topic + " msg: " + msg + ", Exception: " + e.Message);
+            }
+        }
+
+        private void StoreMessage(string eventMsg)
+        {
+            eventMessages.Add(eventMsg);
+        }
+
+        private void ProcessMessage(string msg)
+        {
+            //AddUiMessage("Received: " + msg);
+        }
+
+        protected override void Update()
+        {
+            base.Update(); // call ProcessMqttEvents()
+
+            if (eventMessages.Count > 0)
+            {
+                foreach (string msg in eventMessages)
+                {
+                    ProcessMessage(msg);
+                }
+                eventMessages.Clear();
+            }
+        }
+
+        private void OnDestroy()
+        {
+            Disconnect();
+        }
+
+        private void OnValidate()
+        {
+            if (autoTest)
+            {
+                autoConnect = true;
+            }
+        }
+    }
+}
